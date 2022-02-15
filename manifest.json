@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Queue Time",
+    "description": "Display time remaining in the current queue.",
+    "preview": "QueueTime.png",
+    "main": "QueueTime.js",
+    "readme": "QueueTime.md"
+  }
+]
