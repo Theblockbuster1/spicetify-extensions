@@ -10,7 +10,7 @@ document.head.appendChild( qt_style );
 
 let momentScript = document.createElement( "script" );
 momentScript.setAttribute( 'src', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js' );
-momentScript.setAttribute( 'integrity', 'sha512-x/vqovXY/Q4b+rNjgiheBsA/vbWA3IVvsS8lkQSX1gQ4ggSJx38oI2vREZXpTzhAv6tNUaX81E7QBBzkpDQayA==' );
+momentScript.setAttribute( 'integrity', 'sha512-dGM81hdEjiW5IomkknOx3fIfwij3c7xwh6TcrbumlkHJtO81OKNjLISJaPEhCgVxM6+0uGJ7KRmI2YJFn0AmHQ==' );
 momentScript.setAttribute( 'crossorigin', 'anonymous' );
 momentScript.setAttribute( 'referrerpolicy', 'no-referrer' );
 document.head.appendChild( momentScript );
