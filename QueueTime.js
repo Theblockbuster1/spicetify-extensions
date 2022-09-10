@@ -1,12 +1,12 @@
 let qt_style = document.createElement( "style" );
 qt_style.innerHTML = `
 h1.Type__TypeElement-goli3j-0.dnNHjd.DG9CsoFIptJhAneKoo_F {
-	position: relative;
+    position: relative;
 }
 h1.Type__TypeElement-goli3j-0.dnNHjd.DG9CsoFIptJhAneKoo_F::after {
     content: var(--queue-remaining);
     color: gray;
-	font-size: 1rem;
+    font-size: 1rem;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -22,10 +22,10 @@ momentScript.setAttribute( 'referrerpolicy', 'no-referrer' );
 document.head.appendChild( momentScript );
 
 setInterval( function () {
-	let totalTime = 0;
-	Spicetify.Queue?.nextTracks.some( t => {
-		if ( isNaN( Number( t.contextTrack.metadata.duration ) ) ) return true;
-		totalTime += Number( t.contextTrack.metadata.duration );
-	} );
-	document.querySelector( `h1.Type__TypeElement-goli3j-0.dnNHjd.DG9CsoFIptJhAneKoo_F` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
+    let totalTime = 0;
+    Spicetify.Queue?.nextTracks.some( t => {
+        if ( isNaN( Number( t.contextTrack.metadata.duration ) ) ) return true;
+        totalTime += Number( t.contextTrack.metadata.duration );
+    } );
+    document.querySelector( `h1.Type__TypeElement-goli3j-0.dnNHjd.DG9CsoFIptJhAneKoo_F` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
 }, 1000 );
