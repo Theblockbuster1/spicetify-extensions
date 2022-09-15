@@ -5,5 +5,12 @@
     "preview": "QueueTime.png",
     "main": "QueueTime.js",
     "readme": "QueueTime.md"
+  },
+  {
+    "name": "Sleep Timer",
+    "description": "Automatically pause music after a certain number of minutes or songs.",
+    "preview": "SleepTimer1.png",
+    "main": "SleepTimer.js",
+    "readme": "SleepTimer.md"
   }
 ]
