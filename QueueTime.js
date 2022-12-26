@@ -1,9 +1,9 @@
 let qt_style = document.createElement( "style" );
 qt_style.innerHTML = `
-h1.Type__TypeElement-goli3j-0:first-child {
+h1.Type__TypeElement-sc-goli3j-0:first-child {
     position: relative;
 }
-h1.Type__TypeElement-goli3j-0:first-child::after {
+h1.Type__TypeElement-sc-goli3j-0:first-child::after {
     content: var(--queue-remaining);
     color: gray;
     font-size: 1rem;
@@ -27,5 +27,5 @@ setInterval( function () {
         if ( isNaN( Number( t.contextTrack.metadata.duration ) ) ) return true;
         totalTime += Number( t.contextTrack.metadata.duration );
     } );
-	if (document.querySelector( `h1.Type__TypeElement-goli3j-0:first-child` )?.textContent == 'Queue') document.querySelector( `h1.Type__TypeElement-goli3j-0:first-child` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
+	if (document.querySelector( `h1.Type__TypeElement-sc-goli3j-0:first-child` )?.textContent == 'Queue') document.querySelector( `h1.Type__TypeElement-sc-goli3j-0:first-child` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
 }, 1000 );
