@@ -1,5 +1,16 @@
-{
-  "name": "Queue Time",
-  "description": "Display time remaining in the current queue.",
-  "main": "QueueTime.js"
-}
+[
+  {
+    "name": "Queue Time",
+    "description": "Display time remaining in the current queue.",
+    "preview": "QueueTime.png",
+    "main": "QueueTime.js",
+    "readme": "QueueTime.md"
+  },
+  {
+    "name": "Sleep Timer",
+    "description": "Automatically pause music after a certain number of minutes or songs.",
+    "preview": "SleepTimer1.png",
+    "main": "SleepTimer.js",
+    "readme": "SleepTimer.md"
+  }
+]
