@@ -2,15 +2,22 @@
   {
     "name": "Queue Time",
     "description": "Display time remaining in the current queue.",
-    "preview": "QueueTime.png",
-    "main": "QueueTime.js",
-    "readme": "QueueTime.md"
+    "preview": "QueueTime/QueueTime.png",
+    "main": "QueueTime/QueueTime.js",
+    "readme": "QueueTime/QueueTime.md"
   },
   {
     "name": "Sleep Timer",
     "description": "Automatically pause music after a certain number of minutes or songs.",
-    "preview": "SleepTimer1.png",
-    "main": "SleepTimer.js",
-    "readme": "SleepTimer.md"
+    "preview": "SleepTimer/SleepTimer1.png",
+    "main": "SleepTimer/SleepTimer.js",
+    "readme": "SleepTimer/SleepTimer.md"
+  },
+  {
+    "name": "Cover Ambience",
+    "description": "Produces a lovely aesthetic glow from the currently playing album cover.",
+    "preview": "CoverAmbience/CoverAmbience2.png",
+    "main": "CoverAmbience/CoverAmbience.js",
+    "readme": "CoverAmbience/CoverAmbience.md"
   }
 ]
