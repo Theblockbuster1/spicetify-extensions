@@ -1,8 +1,8 @@
 # Sleep Timer
 Ported from mobile, automatically pause music after a certain number of minutes or songs.
 
-![!Sleep Timer Disabled Screenshot](SleepTimer1.png)
-![!Sleep Timer Enabled Screenshot](SleepTimer2.png)
+![!Sleep Timer Disabled Screenshot](/SleepTimer/SleepTimer1.png)
+![!Sleep Timer Enabled Screenshot](/SleepTimer/SleepTimer2.png)
 
 <br><br>
 

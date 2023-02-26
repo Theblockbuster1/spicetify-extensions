@@ -2,11 +2,11 @@
 Produces a lovely aesthetic glow\
 Uses [node-vibrant](https://github.com/Vibrant-Colors/node-vibrant) to extract the most prominent color from the album cover.
 
-![!Green Queue Time Screenshot](CoverAmbience1.png)
+![!Green Queue Time Screenshot](/CoverAmbience/CoverAmbience1.png)
 
-![!Red Queue Time Screenshot](CoverAmbience2.png)
+![!Red Queue Time Screenshot](/CoverAmbience/CoverAmbience2.png)
 
-![!Purple Queue Time Screenshot](CoverAmbience3.png)
+![!Purple Queue Time Screenshot](/CoverAmbience/CoverAmbience3.png)
 
 <br><br>
 
