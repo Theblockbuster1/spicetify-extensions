@@ -1,12 +1,19 @@
 let ca_style = document.createElement('style');
 ca_style.innerHTML = `
 .main-nowPlayingBar-container {
-    background: linear-gradient(to right, var(--cover-color) 0, rgba(0,0,0,0) 280px, rgba(0,0,0,0) 100%);
+    position: relative;
 }
-.Root__now-playing-bar {
-    background-color: var(--spice-player);
+.main-nowPlayingBar-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cover-color);
+    -webkit-mask-image: linear-gradient(to right, #000f 0, #0000 280px, #0000 100%);
 }
-.main-nowPlayingBar-container {
+.main-nowPlayingBar-container::before {
     transition: background 0.5s ease;
 }
 `;
