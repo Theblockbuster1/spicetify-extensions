@@ -8,12 +8,13 @@ ca_style.innerHTML = `
 }
 .main-nowPlayingBar-container {
     background-size: 100%;
-    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--spice-player) 280px, var(--spice-player) 100%);
+    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--spice-player) 280px, var(--spice-player) 100%) !important;
     position: relative;
     z-index: 100;
 }
 .main-nowPlayingBar-container:before {
     background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--spice-player) 280px, var(--spice-player) 100%);
+    border-radius: var(--border-radius-1) !important;
     content: "";
     display: block;
     height: 100%;
@@ -40,7 +41,9 @@ var beforeElement = false;
 async function setGradient(player) {
     let style = document.querySelector('.main-nowPlayingBar-container')?.style;
     let rgb = ((await Vibrant.from(`https://i.scdn.co/image/${player.data.track.metadata.image_large_url.split(':')[2]}`).getPalette()).Vibrant.rgb || [255, 255, 255]);
-    let colorObject = normal({ r: 33, g: 33, b: 33, a: 1 }, { r: rgb[0], g: rgb[1], b: rgb[2], a: 0.411 });
+    let bodyStyles = window.getComputedStyle(document.body);
+    let backgroundColor = bodyStyles.getPropertyValue('--spice-rgb-player').split(','); 
+    let colorObject = normal({ r: backgroundColor[0], g: backgroundColor[1], b: backgroundColor[2], a: 1 }, { r: rgb[0], g: rgb[1], b: rgb[2], a: 0.411 });
     let color = `rgb(${colorObject.r}, ${colorObject.g}, ${colorObject.b})`;
     if (beforeElement) {
         style.setProperty('--cover-ambience-color', color);
