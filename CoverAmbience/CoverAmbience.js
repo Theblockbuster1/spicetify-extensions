@@ -6,16 +6,14 @@ ca_style.innerHTML = `
 .main-nowPlayingBar-container {
     transition: background 0.5s ease;
 }
-
 .main-nowPlayingBar-container {
     background-size: 100%;
-    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, #212121 280px, #212121 100%);
+    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--spice-player) 280px, var(--spice-player) 100%);
     position: relative;
     z-index: 100;
 }
-
 .main-nowPlayingBar-container:before {
-    background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, #212121 280px, #212121 100%);
+    background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--spice-player) 280px, var(--spice-player) 100%);
     content: "";
     display: block;
     height: 100%;
