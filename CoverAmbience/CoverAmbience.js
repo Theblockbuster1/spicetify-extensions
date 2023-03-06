@@ -43,7 +43,7 @@ async function setGradient(player) {
     let rgb = ((await Vibrant.from(`https://i.scdn.co/image/${player.data.track.metadata.image_large_url.split(':')[2]}`).getPalette()).Vibrant.rgb || [255, 255, 255]);
     let bodyStyles = window.getComputedStyle(document.body);
     let backgroundColor = bodyStyles.getPropertyValue('--spice-rgb-player').split(','); 
-    let colorObject = normal({ r: backgroundColor[0], g: backgroundColor[1], b: backgroundColor[2], a: 1 }, { r: rgb[0], g: rgb[1], b: rgb[2], a: 0.411 });
+    let colorObject = normal({ r: backgroundColor[0], g: backgroundColor[1], b: backgroundColor[2], a: 1 }, { r: rgb[0], g: rgb[1], b: rgb[2], a: 0.44 });
     let color = `rgb(${colorObject.r}, ${colorObject.g}, ${colorObject.b})`;
     if (beforeElement) {
         style.setProperty('--cover-ambience-color', color);
