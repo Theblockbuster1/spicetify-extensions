@@ -44,10 +44,15 @@ function getVibrantRGB(player) {
             const vibrantPalate = await Vibrant.from(img).getPalette();
             resolve(vibrantPalate.Vibrant.rgb);
         });
-        img.addEventListener("error", (e) => {
+        img.addEventListener("error", () => {
             resolve(null);
         });
-        img.src = player.data.track.metadata.image_large_url;
+        const url = player.data.track.metadata.image_large_url
+        if (!url) {
+            resolve(null)
+            return
+        }
+        img.src = url;
     });
 }
 
