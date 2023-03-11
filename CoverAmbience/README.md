@@ -1,6 +1,5 @@
 # Cover Ambience
-Produces a lovely aesthetic glow\
-Uses [node-vibrant](https://github.com/Vibrant-Colors/node-vibrant) to extract the most prominent color from the album cover.
+Produces a lovely aesthetic glow from the currently playing song cover.
 
 ![!Green Queue Time Screenshot](/CoverAmbience/CoverAmbience1.png)
 
