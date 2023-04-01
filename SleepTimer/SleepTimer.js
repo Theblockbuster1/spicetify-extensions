@@ -10292,19 +10292,22 @@ function enableSleepTimer() {
   let type = document.querySelector('input[name="sleep-after"]:checked').value;
   sleepTimer = { type, count: Number($(`input#sleep-after-${type}-count`).val()) };
   $('button#sleep-timer-start').text(`Stop Timer${type == 'song' ? ` (${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)` : ''}`).addClass('btn-primary').removeClass('btn-success');
-  document.querySelector('button.control-button[aria-label="Sleep Timer"]').classList.add("control-button--active", "control-button--active-dot");
+  sleepTimerButton.label = `${type == 'song' ? `${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining` : 'Sleep Timer'}`;
+  sleepTimerButton.active = true;
 
   if (type == 'minutes') {
     let start = Date.now();
     sleepTimer.timer = setInterval(function() {
         var delta = Date.now() - start; // milliseconds elapsed since start
-        $('button#sleep-timer-start').text(`Stop Timer (${(delta / 1000 / 60) > 60 ? moment.utc((sleepTimer.count * 60 * 1000) - delta).format('HH:mm:ss') : moment.utc((sleepTimer.count * 60 * 1000) - delta).format('mm:ss')} remaining)`);
+        let timeRemaining = (sleepTimer.count - (delta / 1000 / 60)) >= 60 ? moment.utc((sleepTimer.count * 60 * 1000) - delta).format('HH:mm:ss') : moment.utc((sleepTimer.count * 60 * 1000) - delta).format('mm:ss');
+        $('button#sleep-timer-start').text(`Stop Timer (${timeRemaining} remaining)`);
+        sleepTimerButton.label = `${timeRemaining} remaining`;
         if (Math.floor(delta / 1000 / 60) >= sleepTimer.count) {
           clearInterval(sleepTimer.timer);
           disableSleepTimer();
           Spicetify.Player.pause();
         }
-    }, 1000);
+    }, 100);
   }
 }
 
@@ -10312,7 +10315,8 @@ function disableSleepTimer() {
   clearInterval(sleepTimer.timer);
   sleepTimer = { type: 'disabled' };
   $('button#sleep-timer-start').text('Start Timer').addClass('btn-success').removeClass('btn-primary');
-  document.querySelector('button.control-button[aria-label="Sleep Timer"]').classList.remove("control-button--active", "control-button--active-dot");
+  sleepTimerButton.active = false;
+  sleepTimerButton.label = 'Sleep Timer';
 }
 
 
@@ -10330,6 +10334,7 @@ Spicetify.Player.addEventListener('songchange', function() {
       Spicetify.Player.pause();
     } else {
       $('button#sleep-timer-start').text(`Stop Timer (${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)`);
+      sleepTimerButton.label = `${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining`;
     }
   }
 });
