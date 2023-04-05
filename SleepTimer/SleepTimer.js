@@ -10334,7 +10334,7 @@ Spicetify.Player.addEventListener('songchange', function() {
       Spicetify.Player.pause();
     } else {
       $('button#sleep-timer-start').text(`Stop Timer (${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)`);
-      sleepTimerButton.label = `${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining`;
+      sleepTimerButton.label = `${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining`;
     }
   }
 });
