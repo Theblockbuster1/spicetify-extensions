@@ -1,9 +1,9 @@
 let qt_style = document.createElement( "style" );
 qt_style.innerHTML = `
-h1.Type__TypeElement-sc-goli3j-0:first-child {
+.queue-queuePage-header {
     position: relative;
 }
-h1.Type__TypeElement-sc-goli3j-0:first-child::after {
+.queue-queuePage-header::after {
     content: var(--queue-remaining);
     color: gray;
     font-size: 1rem;
@@ -27,5 +27,5 @@ setInterval( function () {
         if ( isNaN( Number( t.contextTrack.metadata.duration ) ) ) return true;
         totalTime += Number( t.contextTrack.metadata.duration );
     } );
-	if (document.querySelector( `h1.Type__TypeElement-sc-goli3j-0:first-child` )?.textContent == 'Queue') document.querySelector( `h1.Type__TypeElement-sc-goli3j-0:first-child` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
+	document.querySelector( `.queue-queuePage-header` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
 }, 1000 );

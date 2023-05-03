@@ -19,7 +19,7 @@ function waitForElm(selector) {
 }
 
 (async function() {
-  (await waitForElm('div.mwpJrmCgLlVkJVtWjlI1')).insertAdjacentHTML('afterbegin',
+  (await waitForElm('div.main-nowPlayingBar-extraControls')).insertAdjacentHTML('afterbegin',
   `<style>
   @charset "UTF-8";
 /*#sleep-timer-menu {
