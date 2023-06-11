@@ -5,7 +5,7 @@ qt_style.innerHTML = `
 }
 .queue-queuePage-header::after {
     content: var(--queue-remaining);
-    color: gray;
+    color: var(--spice-subtext);
     font-size: 1rem;
     position: absolute;
     bottom: 0;
