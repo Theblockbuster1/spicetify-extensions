@@ -31,11 +31,11 @@ ca_style.innerHTML = `
 /* Add outlines to song text/artist/genre */
 .main-trackInfo-name
 {
-  text-shadow: -1px -1px 0 #12121280, 1px -1px 0 #12121280, -1px 1px 0 #12121280, 1px 1px 0 #12121280;
+  text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), 0.5), 1px -1px 0 rgba(var(--spice-rgb-player), 0.5), -1px 1px 0 rgba(var(--spice-rgb-player), 0.5), 1px 1px 0 rgba(var(--spice-rgb-player), 0.5);
 }
 .main-trackInfo-artists, .main-trackInfo-genres
 {
-  text-shadow: -1px -1px 0 #2A2A2A80, 1px -1px 0 #2A2A2A80, -1px 1px 0 #2A2A2A80, 1px 1px 0 #2A2A2A80;
+  text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), 0.4), 1px -1px 0 rgba(var(--spice-rgb-player), 0.4), -1px 1px 0 rgba(var(--spice-rgb-player), 0.4), 1px 1px 0 rgba(var(--spice-rgb-player), 0.4);
 }
 `;
 document.head.appendChild(ca_style);
