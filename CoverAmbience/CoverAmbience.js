@@ -1,20 +1,27 @@
 let ca_style = document.createElement('style');
 ca_style.innerHTML = `
-.Root__now-playing-bar {
-    background-color: var(--spice-player);
+:root {
+  --cover-ambience-background: var(--spice-player);
 }
+.Root__now-playing-bar {
+    background-color: var(--cover-ambience-background);
+}
+.Root__now-playing-bar.LibraryX {
+  --cover-ambience-background: var(--spice-sidebar);
+}
+.LibraryX .main-nowPlayingBar-container, .LibraryX .main-nowPlayingBar-container:before {
+    border-radius: 8px;
+}
+
 .main-nowPlayingBar-container {
     transition: background 0.5s ease;
-}
-.main-nowPlayingBar-container {
     background-size: 100%;
-    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--spice-player) 280px, var(--spice-player) 100%) !important;
+    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%) !important;
     position: relative;
     z-index: 100;
 }
 .main-nowPlayingBar-container:before {
-    background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--spice-player) 280px, var(--spice-player) 100%);
-    border-radius: var(--border-radius-1) !important;
+    background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
     content: "";
     display: block;
     height: 100%;
@@ -114,8 +121,20 @@ async function fetchExtractedColors() {
     return hexToRGB(res.data.extractedColors[0].colorRaw.hex);
 }
 
+LibraryX = false; // 'false' because class is not on by default
+async function checkBackgroundColor() {
+  let LibraryXCheck = Spicetify.RemoteConfigResolver.value.localConfiguration.values.get('enableYLXSidebar');
+  if (LibraryX != LibraryXCheck) {
+    LibraryX = LibraryXCheck;
+    let rootClasses = document.querySelector('.Root__now-playing-bar')?.classList;
+    if (LibraryXCheck) rootClasses.add('LibraryX');
+    else rootClasses.remove('LibraryX');
+  }
+}
+
 var beforeElement = false;
 async function setGradient() {
+    checkBackgroundColor();
     let style = document.querySelector('.main-nowPlayingBar-container')?.style;
     let rgb = (await fetchExtractedColors() || [128, 128, 128]);
     let color = RGBToHSL(rgb);
@@ -136,8 +155,10 @@ if (document.querySelector('.main-nowPlayingBar-container')) {
 } else {
     const observer = new MutationObserver(() => {
         if (document.querySelector('.main-nowPlayingBar-container')) {
-            setGradient();
             observer.disconnect();
+            setGradient();
+            Spicetify.Player.addEventListener('songchange', setGradient);
+            setInterval(checkBackgroundColor, 5000);
         }
     });
     observer.observe(document.body, {
@@ -145,6 +166,3 @@ if (document.querySelector('.main-nowPlayingBar-container')) {
         subtree: true
     });
 }
-
-
-Spicetify.Player.addEventListener('songchange', setGradient);
