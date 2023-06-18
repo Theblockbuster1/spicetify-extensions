@@ -36,11 +36,11 @@ ca_style.innerHTML = `
 }
 
 /* Add outlines to song text/artist/genre */
-.main-trackInfo-name
+.Root__now-playing-bar .main-trackInfo-name
 {
   text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), 0.5), 1px -1px 0 rgba(var(--spice-rgb-player), 0.5), -1px 1px 0 rgba(var(--spice-rgb-player), 0.5), 1px 1px 0 rgba(var(--spice-rgb-player), 0.5);
 }
-.main-trackInfo-artists, .main-trackInfo-genres
+.Root__now-playing-bar .main-trackInfo-artists, .Root__now-playing-bar .main-trackInfo-genres
 {
   text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), 0.4), 1px -1px 0 rgba(var(--spice-rgb-player), 0.4), -1px 1px 0 rgba(var(--spice-rgb-player), 0.4), 1px 1px 0 rgba(var(--spice-rgb-player), 0.4);
 }
