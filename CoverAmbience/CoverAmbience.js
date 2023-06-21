@@ -123,7 +123,7 @@ async function fetchExtractedColors() {
 
 LibraryX = false; // 'false' because class is not on by default
 async function checkBackgroundColor() {
-  let LibraryXCheck = Spicetify.RemoteConfigResolver.value.localConfiguration.values.get('enableYLXSidebar');
+  let LibraryXCheck = Spicetify.RemoteConfigResolver.value.localConfiguration.values.get('enableYLXSidebar') || true;
   if (LibraryX != LibraryXCheck) {
     LibraryX = LibraryXCheck;
     let rootClasses = document.querySelector('.Root__now-playing-bar')?.classList;
