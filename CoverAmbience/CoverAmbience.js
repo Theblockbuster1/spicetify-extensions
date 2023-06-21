@@ -149,16 +149,19 @@ async function setGradient() {
     }
 }
 
+function initiate() {
+  setGradient();
+  Spicetify.Player.addEventListener('songchange', setGradient);
+  setInterval(checkBackgroundColor, 5000);
+}
 
 if (document.querySelector('.main-nowPlayingBar-container')) {
-    setGradient();
+  initiate();
 } else {
     const observer = new MutationObserver(() => {
         if (document.querySelector('.main-nowPlayingBar-container')) {
             observer.disconnect();
-            setGradient();
-            Spicetify.Player.addEventListener('songchange', setGradient);
-            setInterval(checkBackgroundColor, 5000);
+            initiate();
         }
     });
     observer.observe(document.body, {
