@@ -3,9 +3,6 @@ ca_style.innerHTML = `
 :root {
   --cover-ambience-background: var(--spice-player);
 }
-.Root__now-playing-bar {
-    background-color: var(--cover-ambience-background);
-}
 .Root__now-playing-bar.LibraryX {
   --cover-ambience-background: var(--spice-sidebar);
 }
@@ -16,12 +13,14 @@ ca_style.innerHTML = `
 .main-nowPlayingBar-container {
     transition: background 0.5s ease;
     background-size: 100%;
-    background-image: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%) !important;
+    --bg-img: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
+    --bg-img-before: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
+    background-image: var(--bg-img) !important;
     position: relative;
     z-index: 100;
 }
 .main-nowPlayingBar-container:before {
-    background-image: linear-gradient(to right, var(--cover-ambience-color-before) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
+    background-image: var(--bg-img-before);
     content: "";
     display: block;
     height: 100%;
@@ -158,10 +157,22 @@ function initiate() {
 if (document.querySelector('.main-nowPlayingBar-container')) {
   initiate();
 } else {
+    var waiting = true;
     const observer = new MutationObserver(() => {
-        if (document.querySelector('.main-nowPlayingBar-container')) {
-            observer.disconnect();
-            initiate();
+        if (waiting) {
+          if (document.querySelector('.main-nowPlayingBar-container')) {
+              waiting = false;
+              initiate();
+          }
+        } else {
+          let playingBar = document.querySelector('.main-nowPlayingBar-container');
+          if (document.querySelector('.BeautifulLyricsPage.Cinema')) {
+              playingBar.style.setProperty("--bg-img", "unset");
+              playingBar.style.setProperty("--bg-img-before", "unset");
+          } else {
+              playingBar.style.removeProperty("--bg-img");
+              playingBar.style.removeProperty("--bg-img-before");
+          }
         }
     });
     observer.observe(document.body, {
