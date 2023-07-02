@@ -1,6 +1,10 @@
 # Cover Ambience
 Produces a lovely aesthetic glow from the currently playing song cover.
 
+![!New UI Queue Time Screenshot](/CoverAmbience/CoverAmbience4.png)
+
+Old UI Screenshots:
+
 ![!Green Queue Time Screenshot](/CoverAmbience/CoverAmbience1.png)
 
 ![!Red Queue Time Screenshot](/CoverAmbience/CoverAmbience2.png)
