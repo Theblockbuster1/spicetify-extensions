@@ -10232,7 +10232,7 @@ to {
   document.head.appendChild( bootstrapScript );
   let jQueryScript = document.createElement( "script" );
   jQueryScript.setAttribute( 'src', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js' );
-  jQueryScript.setAttribute( 'integrity', 'sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' );
+  jQueryScript.setAttribute( 'integrity', 'sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==' );
   jQueryScript.setAttribute( 'crossorigin', 'anonymous' );
   jQueryScript.setAttribute( 'referrerpolicy', 'no-referrer' );
   document.head.appendChild( jQueryScript );
