@@ -167,7 +167,8 @@ function initiate() {
 
   var contextMenu = 0;
 
-  info.addEventListener('contextmenu', () => { // check if the context menu was clicked within the track info container
+  info.addEventListener('mousedown', e => { // check if the context menu was clicked within the track info container
+    if (e.button != 2) return; // right clicks only
     contextMenu = Date.now();
   })
 
