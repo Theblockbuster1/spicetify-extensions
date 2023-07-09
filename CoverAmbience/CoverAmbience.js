@@ -224,7 +224,7 @@ function initiate() {
       });
     },
     () => {
-      return Date.now() - contextMenu <= 150;
+      return Date.now() - contextMenu <= 500;
     },
     'edit',
     false,
