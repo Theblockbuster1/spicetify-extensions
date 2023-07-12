@@ -11,6 +11,9 @@ qt_style.innerHTML = `
     bottom: 0;
     right: 0;
 }
+.queue-panel .queue-queuePage-header::after {
+    top: 2px;
+}
 `;
 document.head.appendChild( qt_style );
 
