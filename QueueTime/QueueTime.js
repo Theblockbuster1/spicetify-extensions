@@ -12,7 +12,7 @@ qt_style.innerHTML = `
     right: 0;
 }
 .queue-panel .queue-queuePage-header::after {
-    top: 2px;
+    top: 3px;
 }
 `;
 document.head.appendChild( qt_style );
