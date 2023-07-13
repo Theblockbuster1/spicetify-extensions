@@ -24,11 +24,7 @@ momentScript.setAttribute( 'crossorigin', 'anonymous' );
 momentScript.setAttribute( 'referrerpolicy', 'no-referrer' );
 document.head.appendChild( momentScript );
 
-setInterval( function () {
-    let totalTime = 0;
-    Spicetify.Queue?.nextTracks.some( t => {
-        if ( isNaN( Number( t.contextTrack.metadata.duration ) ) ) return true;
-        totalTime += Number( t.contextTrack.metadata.duration );
-    } );
-	document.querySelector( `.queue-queuePage-header` )?.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` );
+setInterval( () => {
+	const totalTime = Spicetify.Queue?.nextTracks.reduce( ( acc, cur ) => acc + ( Number( cur.contextTrack.metadata.duration ) || 0 ), 0 );
+	document.querySelectorAll( ".queue-queuePage-header" )?.forEach(e => e.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` ) );
 }, 1000 );
