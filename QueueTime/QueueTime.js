@@ -25,6 +25,6 @@ momentScript.setAttribute( 'referrerpolicy', 'no-referrer' );
 document.head.appendChild( momentScript );
 
 setInterval( () => {
-	const totalTime = Spicetify.Queue?.nextTracks.reduce( ( acc, cur ) => acc + ( Number( cur.contextTrack.metadata.duration ) || 0 ), 0 );
+	const totalTime = Spicetify.Queue?.nextTracks.reduce( ( acc, cur ) => acc + ( Number( cur.contextTrack.metadata.duration ) || 0 ), 0 ) || 0;
 	document.querySelectorAll( '.queue-queuePage-header' )?.forEach(e => e.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` ) );
 }, 1000 );
