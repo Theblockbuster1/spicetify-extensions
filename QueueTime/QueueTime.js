@@ -27,7 +27,7 @@ document.head.appendChild( momentScript );
 setInterval( () => {
 	const totalTime = Spicetify.Queue?.nextTracks.slice( 0 ).reduce( ( acc, cur, _, arr ) => {
 		if ( isNaN( Number( cur.contextTrack.metadata.duration ) ) ) arr.splice(1);
-        	return acc + ( Number( cur.contextTrack.metadata.duration ) || 0 )
-    	}, 0 ) || 0;
+		return acc + ( Number( cur.contextTrack.metadata.duration ) || 0 )
+	}, 0 ) || 0;
 	document.querySelectorAll( '.queue-queuePage-header' )?.forEach(e => e.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` ) );
 }, 1000 );
