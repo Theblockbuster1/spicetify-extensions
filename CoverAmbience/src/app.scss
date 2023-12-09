@@ -1,0 +1,19 @@
+.ambience-gradient {
+  position: absolute;
+  transition:
+    width 400ms ease,
+    background-color 500ms ease;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+}
+
+body:has(.BeautifulLyricsPage) .ambience-gradient {
+  background-color: unset !important;
+}
+
+// fix for Bloom
+.ambience-settings .x-settings-secondColumn:has(.playback-progressbar) span {
+  margin-left: 12px;
+  width: 40px;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "spicetify-extensions",
+  "private": true,
+  "packageManager": "pnpm@8.11.0",
+  "workspaces": [
+    "./*"
+  ],
+  "engines": {
+    "yarn": "please-use-pnpm",
+    "npm": "please-use-pnpm",
+    "pnpm": ">=8"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "build-local": "pnpm -r build-local",
+    "watch": "pnpm -r watch",
+    "format": "prettier --write --cache .",
+    "format-check": "prettier --check --cache .",
+    "type-check": "pnpm -r type-check",
+    "test": "pnpm type-check && pnpm format-check",
+    "update-spicetify-types": "curl -s -o ./shared/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2",
+    "spicetify-creator": "^1.0.17"
+  }
+}

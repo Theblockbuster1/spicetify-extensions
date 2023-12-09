@@ -1,0 +1,10 @@
+{
+  "name": "cover-ambience",
+  "private": true,
+  "scripts": {
+    "build": "spicetify-creator --out=./dist --minify",
+    "build-local": "spicetify-creator",
+    "watch": "spicetify-creator --watch",
+    "type-check": "tsc --noEmit"
+  }
+}

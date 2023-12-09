@@ -17,7 +17,7 @@
     "name": "Cover Ambience",
     "description": "Produces a lovely aesthetic glow from the currently playing album cover.",
     "preview": "CoverAmbience/CoverAmbience4.png",
-    "main": "CoverAmbience/CoverAmbience.js",
+    "main": "CoverAmbience/dist/cover-ambience.js",
     "readme": "CoverAmbience/README.md"
   }
 ]
