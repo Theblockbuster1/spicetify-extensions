@@ -52,7 +52,7 @@ class Ambience {
     }
   }
 
-  private static setTextColor(shouldColorToWhite: boolean): void {
+  private static setTextColor(shouldColorToWhite: boolean = getSetting("make-text-white")): void {
     const { style } = Ambience.nowPlayingWidget;
     if (shouldColorToWhite) {
       style.setProperty("--text-subdued", "white");
@@ -66,20 +66,20 @@ class Ambience {
   }
 
   private static applyThemeFixes(theme: string = Spicetify.Config.current_theme): void {
-    switch (theme) {
-      case "Bloom":
+    switch (theme.toLowerCase()) {
+      case "bloom":
         Ambience.ambienceStyle.marginTop = "";
         Ambience.ambienceStyle.marginLeft = "";
         Ambience.ambienceStyle.height = "100%";
         break;
 
-      case "Dribbblish":
+      case "dribbblish":
         Ambience.ambienceStyle.marginTop = "";
         Ambience.ambienceStyle.marginLeft = "";
         Ambience.ambienceStyle.height = `${getComputedStyle(Ambience.rootNowPlayingBar).height}`;
         break;
 
-      case "Comfy":
+      case "comfy":
         if (!Ambience.isLibaryX) {
           Ambience.ambienceStyle.zIndex = "1";
           const nowPlayingBar = document.querySelector(".main-nowPlayingBar-nowPlayingBar");
@@ -102,7 +102,7 @@ class Ambience {
   }
 
   private static keepTextColor(): void {
-    Ambience.setTextColor(getSetting("make-text-white"));
+    Ambience.setTextColor();
     subscribeToSetting("make-text-white", Ambience.setTextColor);
   }
 
