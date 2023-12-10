@@ -23,7 +23,6 @@ function SettingsModal(): React.ReactElement {
           </div>
           <div className="x-settings-secondColumn">
             <Spicetify.ReactComponent.Slider
-              min={1}
               max={100}
               step={1}
               value={opacity}
