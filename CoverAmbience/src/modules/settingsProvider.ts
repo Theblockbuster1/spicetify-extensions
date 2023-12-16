@@ -13,7 +13,7 @@ class SettingsProvider {
     "make-text-white": true,
   };
 
-  private static callbacks: Map<keyof Settings, Callback<any>[]> = new Map();
+  private static callbacks: Map<keyof Settings, Set<Callback<any>>> = new Map();
 
   public static getSetting<T extends keyof Settings>(settingName: T): Settings[T] {
     const value = localStorage.getItem(`${SettingsProvider.storageKeyPrefix}:${settingName}`);
@@ -38,9 +38,9 @@ class SettingsProvider {
     callback: Callback<T>,
   ): void {
     if (!SettingsProvider.callbacks.has(settingName)) {
-      SettingsProvider.callbacks.set(settingName, []);
+      SettingsProvider.callbacks.set(settingName, new Set());
     }
-    SettingsProvider.callbacks.get(settingName)!.push(callback);
+    SettingsProvider.callbacks.get(settingName)!.add(callback);
   }
 }
 

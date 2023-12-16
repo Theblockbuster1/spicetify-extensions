@@ -1,10 +1,17 @@
 import React from "react";
 
-import "./app.scss";
+import "./styles/index.scss";
 
 import SettingsProvider from "./modules/settingsProvider";
 const { getSetting, subscribeToSetting } = SettingsProvider;
 import SettingsModal from "./components/settingsModal";
+import {
+  ROOT_NOW_PLAYING_BAR_SELECTOR,
+  NOW_PLAYING_BAR_SELECTOR,
+  NOW_PLAYING_WIDGET_SELECTOR,
+  NOW_PLAYING_BAR_LEFT_SELECTOR,
+  LIBRARY_X_SELECTOR,
+} from "./constants/selectors";
 
 class Ambience {
   private static ambienceStyle: CSSStyleDeclaration;
@@ -17,7 +24,14 @@ class Ambience {
 
   private static isLibaryX: boolean;
 
+  private static textStyle?: HTMLStyleElement;
+
   private static setWidth(): void {
+    if (!Ambience.nowPlayingWidget.isConnected) {
+      Ambience.initElements();
+      return;
+    }
+
     let gradientWidth: number =
       80 + parseFloat(getComputedStyle(Ambience.nowPlayingBarLeft).paddingInlineStart || "0");
 
@@ -53,15 +67,20 @@ class Ambience {
   }
 
   private static setTextColor(shouldColorToWhite: boolean = getSetting("make-text-white")): void {
-    const { style } = Ambience.nowPlayingWidget;
     if (shouldColorToWhite) {
-      style.setProperty("--text-subdued", "white");
-      style.setProperty("--spice-subtext", "white");
-      style.setProperty("--spice-text", "white");
-    } else {
-      style.setProperty("--text-subdued", "");
-      style.setProperty("--spice-subtext", "");
-      style.setProperty("--spice-text", "");
+      if (!Ambience.textStyle) {
+        Ambience.textStyle = document.createElement("style");
+        document.head.appendChild(Ambience.textStyle);
+      }
+      Ambience.textStyle.innerHTML = `
+        ${NOW_PLAYING_WIDGET_SELECTOR} {
+          --text-subdued: white !important;
+          --spice-subtext: white !important;
+          --spice-text: white !important;
+        }
+      `;
+    } else if (Ambience.textStyle) {
+      Ambience.textStyle.innerHTML = "";
     }
   }
 
@@ -82,7 +101,7 @@ class Ambience {
       case "comfy":
         if (!Ambience.isLibaryX) {
           Ambience.ambienceStyle.zIndex = "1";
-          const nowPlayingBar = document.querySelector(".main-nowPlayingBar-nowPlayingBar");
+          const nowPlayingBar = document.querySelector(NOW_PLAYING_BAR_SELECTOR);
           if (nowPlayingBar instanceof HTMLElement) {
             nowPlayingBar.style.zIndex = "1";
           }
@@ -120,10 +139,12 @@ class Ambience {
 
   private static keepAmbienceWidth(): void {
     Ambience.setWidth();
-    new MutationObserver(Ambience.setWidth).observe(Ambience.nowPlayingWidget, {
+
+    new MutationObserver(Ambience.setWidth).observe(Ambience.nowPlayingBarLeft, {
       childList: true,
       subtree: true,
     });
+
     window.addEventListener("resize", Ambience.setWidth);
   }
 
@@ -151,10 +172,28 @@ class Ambience {
     }).register();
   }
 
+  private static initElements(): void {
+    const rootNowPlayingBar = document.querySelector(ROOT_NOW_PLAYING_BAR_SELECTOR);
+    const nowPlayingWidget = document.querySelector(NOW_PLAYING_WIDGET_SELECTOR);
+    const nowPlayingBarLeft = document.querySelector(NOW_PLAYING_BAR_LEFT_SELECTOR);
+    const libaryXElement = document.querySelector(LIBRARY_X_SELECTOR);
+
+    if (
+      !(rootNowPlayingBar instanceof HTMLDivElement) ||
+      !(nowPlayingWidget instanceof HTMLElement) ||
+      !(nowPlayingBarLeft instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    Ambience.rootNowPlayingBar = rootNowPlayingBar;
+    Ambience.nowPlayingWidget = nowPlayingWidget;
+    Ambience.nowPlayingBarLeft = nowPlayingBarLeft;
+    Ambience.isLibaryX = Boolean(libaryXElement);
+  }
+
   public static init(): void {
-    const rootNowPlayingBar = document.querySelector(".Root__now-playing-bar");
-    const nowPlayingWidget = document.querySelector(".main-nowPlayingWidget-nowPlaying");
-    const nowPlayingBarLeft = document.querySelector(".main-nowPlayingBar-left");
+    Ambience.initElements();
 
     if (
       !Spicetify.Player ||
@@ -162,18 +201,13 @@ class Ambience {
       !Spicetify.Config ||
       !Spicetify.Menu ||
       !Spicetify.PopupModal ||
-      !(rootNowPlayingBar instanceof HTMLDivElement) ||
-      !(nowPlayingWidget instanceof HTMLElement) ||
-      !(nowPlayingBarLeft instanceof HTMLElement)
+      !Ambience.rootNowPlayingBar ||
+      !Ambience.nowPlayingWidget ||
+      !Ambience.nowPlayingBarLeft
     ) {
       setTimeout(Ambience.init, 300);
       return;
     }
-
-    Ambience.rootNowPlayingBar = rootNowPlayingBar;
-    Ambience.nowPlayingWidget = nowPlayingWidget;
-    Ambience.nowPlayingBarLeft = nowPlayingBarLeft;
-    Ambience.isLibaryX = Boolean(document.querySelector("[class*='yourLibraryX']"));
 
     Ambience.createAmbience();
     Ambience.keepTextColor();
