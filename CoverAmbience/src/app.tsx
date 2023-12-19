@@ -8,8 +8,9 @@ import SettingsModal from "./components/settingsModal";
 import {
   ROOT_NOW_PLAYING_BAR_SELECTOR,
   NOW_PLAYING_BAR_SELECTOR,
-  NOW_PLAYING_WIDGET_SELECTOR,
   NOW_PLAYING_BAR_LEFT_SELECTOR,
+  NOW_PLAYING_WIDGET_SELECTOR,
+  NOW_PLAYING_WIDGET_TRACK_INFO_SELECTOR,
   LIBRARY_X_SELECTOR,
 } from "./constants/selectors";
 
@@ -73,10 +74,11 @@ class Ambience {
         document.head.appendChild(Ambience.textStyle);
       }
       Ambience.textStyle.innerHTML = `
-        ${NOW_PLAYING_WIDGET_SELECTOR} {
+        ${NOW_PLAYING_WIDGET_TRACK_INFO_SELECTOR} *  {
           --text-subdued: white !important;
           --spice-subtext: white !important;
           --spice-text: white !important;
+          color: white !important;
         }
       `;
     } else if (Ambience.textStyle) {
