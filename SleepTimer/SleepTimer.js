@@ -10213,10 +10213,10 @@ to {
                   <h3 style="display: block; padding: 14px;" tabindex="-1">Sleep Timer</h3>
               </div>
               <div style="padding: 0 15px 20px;">
-                  <input class="form-check-input" type="radio" id="sleep-after-song" name="sleep-after" value="song">
+                  <input class="form-check-input" type="radio" id="sleep-after-song" name="sleep-after" value="song" style="transform: translateY(2px);">
                   <label for="sleep-after-song">Sleep after <div style="width: 127px; display: inline-block;"><label for="sleep-after-song-count"></label><input style="width: 35px;" type="number" id="sleep-after-song-count" name="sleep-after-song-count" min="1" value="1"></div> song(s)</label>
                   <br>
-                  <input class="form-check-input" type="radio" id="sleep-after-minutes" name="sleep-after" value="minutes">
+                  <input class="form-check-input" type="radio" id="sleep-after-minutes" name="sleep-after" value="minutes" style="transform: translateY(2px);">
                   <label for="sleep-after-minutes">Sleep after <div style="width: 127px; display: inline-block;"><label for="sleep-after-minutes-count"></label><input style="width: 35px;" type="number" id="sleep-after-minutes-count" name="sleep-after-minutes-count" min="1" value="30"></div> minute(s)</label>
               </div>
               <button type="button" class="btn btn-success" id="sleep-timer-start" disabled onclick="sleepTimerSubmit()">Start Timer</button>
