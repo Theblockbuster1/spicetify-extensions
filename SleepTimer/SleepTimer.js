@@ -10331,7 +10331,21 @@ Spicetify.Player.addEventListener('songchange', function() {
   if (sleepTimer.type == 'song') {
     if (sleepTimer.count == 1) {
       disableSleepTimer();
+      let volumeBefore = Spicetify.Player.getVolume();
+      Spicetify.Player.setVolume(0);
       Spicetify.Player.pause();
+      let intid = setInterval(() => {
+        if (Spicetify.Player.isPlaying()) {
+          if (Spicetify.Player.getVolume()) Spicetify.Player.setVolume(0);
+          Spicetify.Player.pause();
+        }
+      }, 500);
+      setTimeout(() => {
+        clearInterval(intid);
+        Spicetify.Player.pause();
+        Spicetify.Player.setVolume(volumeBefore);
+        Spicetify.Player.skipBack(99999999);
+      }, 3100)
     } else {
       $('button#sleep-timer-start').text(`Stop Timer (${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)`);
       sleepTimerButton.label = `${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining`;
