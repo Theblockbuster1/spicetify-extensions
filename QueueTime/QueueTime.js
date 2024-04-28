@@ -12,7 +12,7 @@ qt_style.innerHTML = `
     right: 0;
 }
 .queue-panel .queue-queuePage-header::after, #queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3::after {
-    top: 3px;
+    top: 4.5px;
 }
 `;
 document.head.appendChild( qt_style );
