@@ -10150,13 +10150,109 @@ color: var(--text-base,#000000);
 .input-spinner-input-spinner input {
 width: 35px;
 }
+
 #sleep-timer-menu {
-width: 340px;
+  width: 200px;
 }
 
 button#sleep-timer-start {
-margin: 10px 10px;
-width: calc(100% - 20px);
+  margin: 10px 10px;
+  width: calc(100% - 20px);
+  font-size: 24px !important;
+  padding: 0 !important;
+
+  filter: brightness(100%) !important;
+  transition: filter 0.15s !important;
+}
+button#sleep-timer-start.timer:not(:hover) {
+  font-weight: 600;
+}
+
+button#sleep-timer-start.btn-primary:not(.timer) {
+  font-size: 15px !important;
+}
+button#sleep-timer-start.btn-primary:not(.timer) b {
+  font-size: 24px;
+}
+
+button#sleep-timer-start.btn-success {
+  color: var(--spice-shadow);
+}
+button#sleep-timer-start.btn-primary {
+  color: var(--spice-text);
+}
+button#sleep-timer-start.btn-primary:hover, button#sleep-timer-start.btn-primary:hover b {
+  font-size: 0 !important;
+}
+button#sleep-timer-start.btn-primary:hover::after {
+  content: "Stop";
+  font-size: 24px;
+}
+
+button#sleep-timer-start:hover {
+  filter: brightness(90%) !important;
+}
+
+#sleep-timer-menu div.input-spinner-input-spinner {
+  width: 127px;
+  margin: 0 auto;
+  transition: box-shadow 0.15s;
+  border-radius: 0.375rem;
+}
+#sleep-timer-menu div.input-spinner-input-spinner > * {
+  height: 28px;
+}
+#sleep-timer-menu div.input-spinner-input-spinner button strong {
+  position: absolute;
+  transform: translate(-4.5px, -12px);
+}
+
+#sleep-timer-menu label svg {
+  transition: filter 0.15s,
+              transform 0.3s ease-in-out;
+}
+
+#sleep-timer-menu label .timer-icons-label {
+  transition: transform 0.3s ease-in-out,
+              opacity 0.3s ease-in-out;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  font-size: 11px;
+  color: var(--spice-subtext);
+}
+#sleep-timer-menu label:hover .timer-icons-label {
+  opacity: 1;
+}
+#sleep-timer-menu label:hover .timer-icons-label.icons-label-songs {
+  transform: translate(-10px, 2px) !important;
+}
+#sleep-timer-menu label:hover .timer-icons-label.icons-label-minutes {
+  transform: translate(-5px, 3px) !important;
+}
+
+#sleep-timer-menu input[type=radio]:checked + label div.input-spinner-input-spinner {
+  box-shadow: 0 0 10px #ffffff;
+}
+#sleep-timer-menu input[type=radio]:checked + label svg {
+  filter: drop-shadow(0 0 0.325rem white);
+}
+
+#sleep-timer-menu label:hover div.input-spinner-input-spinner {
+  box-shadow: 0 0 10px #ffffff6b;
+}
+#sleep-timer-menu label:hover svg {
+  filter: drop-shadow(0 0 0.325rem white);
+  transform: translateY(-3px);
+}
+
+div:has(~ button#sleep-timer-start.btn-primary).form > label > div,
+div:has(~ button#sleep-timer-start.btn-primary).form > label > svg,
+div:has(~ button#sleep-timer-start.btn-primary).form > label > span {
+  filter: blur(0.8px) brightness(0.8);
+}
+div:has(~ button#sleep-timer-start.btn-primary).form > label {
+  pointer-events: none;
 }
 
 
@@ -10210,16 +10306,29 @@ to {
       <div id="sleep-timer-menu" class="popup-menu">
           <div style="max-height: calc(100vh - 90px); overflow-y: auto; padding: 5px;">
               <div class="Type__TypeElement-goli3j-0 dMODvo" style="position: relative; text-align: center;">
-                  <h3 style="display: block; padding: 14px;" tabindex="-1">Sleep Timer<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px" x="0px" y="0px" viewBox="0 0 121.85 126.24" xml:space="preserve" fill="gray" style="bottom: 30px;position: absolute;margin-left: 1px;"><g><path d="M5.27,44.71l22.38-26.77H12.93c-1.27,0-2.47-0.16-3.59-0.49c-0.66-0.19-1.27-0.44-1.83-0.73c-0.56-0.3-1.09-0.66-1.57-1.08 l-0.03-0.02c-0.48-0.42-0.9-0.87-1.27-1.37c-0.36-0.5-0.68-1.04-0.93-1.62C3.48,12.08,3.3,11.5,3.18,10.9 c-0.12-0.61-0.19-1.22-0.19-1.83c0-0.62,0.06-1.23,0.17-1.82c0.12-0.6,0.29-1.18,0.52-1.74c0.24-0.58,0.55-1.13,0.9-1.64 c0.36-0.51,0.77-0.98,1.24-1.42l0.04-0.03c0.47-0.43,0.99-0.8,1.56-1.12C8,0.99,8.61,0.72,9.27,0.52c0.57-0.17,1.16-0.31,1.77-0.39 C11.66,0.04,12.29,0,12.93,0h31.91c1.62,0,3.08,0.22,4.38,0.66c1.33,0.45,2.49,1.14,3.47,2.05c1.02,0.95,1.79,2.09,2.3,3.41 c0.5,1.29,0.75,2.75,0.75,4.36c0,1.26-0.13,2.45-0.39,3.55c-0.14,0.61-0.33,1.19-0.56,1.76c-0.23,0.56-0.51,1.1-0.82,1.6 c-0.22,0.35-0.49,0.74-0.8,1.17c-0.27,0.38-0.63,0.85-1.06,1.39l-1.28,1.6L28.97,47.58h19.64c0.61,0,1.22,0.04,1.83,0.12 c0.58,0.07,1.16,0.19,1.72,0.34c0.66,0.18,1.26,0.42,1.81,0.69c0.55,0.28,1.06,0.62,1.54,1.01l0.03,0.03 c0.51,0.42,0.95,0.88,1.33,1.39c0.39,0.52,0.71,1.07,0.96,1.66l0.11,0.29c0.2,0.5,0.34,1.04,0.44,1.6c0.1,0.56,0.15,1.13,0.15,1.7 c0,0.62-0.06,1.24-0.17,1.84c-0.11,0.6-0.28,1.18-0.5,1.73c-0.24,0.59-0.54,1.15-0.91,1.67c-0.37,0.52-0.79,1.01-1.27,1.44 l-0.06,0.05c-0.47,0.42-1,0.8-1.57,1.11c-0.56,0.31-1.16,0.56-1.81,0.76l-0.23,0.06c-0.52,0.14-1.07,0.25-1.64,0.32 c-0.59,0.07-1.19,0.11-1.78,0.11H12.16c-1.66,0-3.19-0.21-4.58-0.62l-0.01,0c-0.78-0.23-1.52-0.53-2.2-0.91 c-0.69-0.38-1.33-0.82-1.89-1.33c-0.57-0.51-1.08-1.07-1.52-1.68c-0.44-0.61-0.81-1.26-1.1-1.96c-0.29-0.68-0.5-1.39-0.64-2.1 C0.07,56.19,0,55.44,0,54.68c0-0.59,0.06-1.19,0.16-1.78c0.11-0.59,0.27-1.16,0.48-1.7l0.03-0.08c0.08-0.21,0.17-0.43,0.27-0.64 l0.31-0.61l0.36-0.61c0.15-0.21,0.3-0.44,0.46-0.65l-0.05-0.04L5.27,44.71L5.27,44.71z M12.48,111.33l14.9-17.82h-9.34 c-0.91,0-1.76-0.12-2.57-0.35c-0.48-0.14-0.93-0.32-1.33-0.53c-0.41-0.22-0.8-0.49-1.15-0.79l-0.05-0.05 c-0.34-0.29-0.64-0.62-0.89-0.97c-0.27-0.36-0.49-0.76-0.68-1.18c-0.18-0.4-0.31-0.83-0.4-1.27c-0.09-0.44-0.14-0.89-0.14-1.34 c0-0.45,0.04-0.89,0.13-1.32c0.09-0.44,0.21-0.86,0.38-1.27c0.18-0.42,0.4-0.83,0.66-1.2c0.25-0.36,0.56-0.71,0.91-1.03l0.01-0.02 c0.35-0.32,0.73-0.59,1.15-0.83c0.42-0.23,0.87-0.42,1.34-0.57c0.41-0.13,0.84-0.22,1.28-0.28c0.45-0.06,0.9-0.09,1.35-0.09h21.96 c1.15,0,2.2,0.16,3.13,0.48c0.96,0.33,1.81,0.82,2.52,1.49c0.74,0.69,1.31,1.52,1.68,2.48c0.36,0.93,0.54,1.98,0.54,3.13 c0,0.43-0.02,0.86-0.07,1.3c-0.05,0.43-0.12,0.84-0.2,1.23c-0.1,0.43-0.24,0.85-0.4,1.26c-0.16,0.4-0.36,0.79-0.59,1.15 c-0.14,0.24-0.33,0.51-0.56,0.83l-0.73,0.97l-0.88,1.1l-14.56,17.32h12.73c0.43,0,0.86,0.03,1.31,0.08 c0.43,0.05,0.84,0.14,1.23,0.24c0.48,0.13,0.92,0.3,1.31,0.5c0.41,0.21,0.79,0.46,1.15,0.76c0.37,0.3,0.7,0.65,0.98,1.02 c0.29,0.38,0.52,0.79,0.71,1.22l0.08,0.22c0.14,0.37,0.25,0.76,0.32,1.17c0.08,0.41,0.11,0.83,0.11,1.23 c0,0.45-0.04,0.89-0.12,1.33c-0.08,0.44-0.2,0.86-0.37,1.26c-0.17,0.43-0.4,0.84-0.67,1.22c-0.27,0.39-0.58,0.74-0.92,1.05 l-0.04,0.04c-0.35,0.31-0.73,0.58-1.15,0.81c-0.4,0.22-0.84,0.4-1.31,0.55l-0.18,0.05c-0.37,0.1-0.76,0.18-1.17,0.23 c-0.43,0.05-0.86,0.08-1.27,0.08H17.5c-0.57,0-1.13-0.04-1.69-0.11c-0.55-0.07-1.07-0.19-1.57-0.33c-0.57-0.17-1.1-0.39-1.6-0.66 c-0.49-0.27-0.95-0.59-1.37-0.96c-0.42-0.37-0.78-0.77-1.1-1.21c-0.32-0.43-0.58-0.91-0.8-1.42c-0.21-0.5-0.36-1-0.47-1.52 c-0.1-0.52-0.15-1.06-0.15-1.61c0-0.42,0.04-0.86,0.12-1.29c0.08-0.43,0.2-0.84,0.35-1.23c0.08-0.15,0.15-0.35,0.22-0.51l0.22-0.44 l0.41-0.65l-0.05-0.04L12.48,111.33L12.48,111.33z M70.52,74.89l21.47-25.68H77.93c-0.6,0-1.2-0.04-1.79-0.12 c-0.58-0.08-1.14-0.2-1.67-0.35c-0.63-0.18-1.22-0.42-1.76-0.7c-0.55-0.29-1.06-0.64-1.52-1.04l-0.06-0.06 c-0.45-0.39-0.84-0.82-1.18-1.28c-0.36-0.48-0.66-1.01-0.9-1.57c-0.23-0.53-0.41-1.09-0.53-1.68c-0.12-0.59-0.18-1.18-0.18-1.77 c0-0.6,0.06-1.19,0.17-1.77c0.11-0.58,0.28-1.14,0.51-1.67c0.23-0.56,0.53-1.09,0.87-1.58c0.34-0.48,0.74-0.94,1.2-1.36l0.02-0.02 c0.46-0.42,0.97-0.79,1.52-1.1c0.55-0.31,1.15-0.56,1.78-0.75c0.56-0.17,1.13-0.3,1.71-0.38c0.59-0.08,1.2-0.13,1.82-0.13h30.7 c1.56,0,2.97,0.21,4.23,0.64c1.29,0.44,2.41,1.1,3.36,1.98c0.99,0.92,1.73,2.02,2.23,3.3c0.48,1.25,0.73,2.65,0.73,4.21 c0,1.22-0.12,2.36-0.37,3.42c-0.14,0.58-0.32,1.15-0.54,1.7c-0.22,0.55-0.49,1.06-0.79,1.54c-0.2,0.32-0.46,0.7-0.77,1.13 c-0.29,0.41-0.63,0.86-1.01,1.34l-1.23,1.53c-0.38,0.47-0.84,1.02-1.38,1.66l-19.6,23.32h18.8c1.22,0,2.37,0.15,3.42,0.44 c0.62,0.17,1.2,0.4,1.74,0.67c0.55,0.28,1.06,0.61,1.53,1l0.02,0.02c0.49,0.41,0.91,0.85,1.27,1.33c0.37,0.5,0.69,1.04,0.93,1.61 l0.1,0.27c0.19,0.49,0.34,1.01,0.44,1.55c0.1,0.55,0.15,1.1,0.15,1.64c0,0.6-0.06,1.2-0.16,1.78c-0.11,0.58-0.27,1.14-0.49,1.67 c-0.23,0.57-0.52,1.11-0.88,1.62c-0.35,0.5-0.76,0.96-1.22,1.39l-0.06,0.06c-0.46,0.42-0.97,0.78-1.51,1.07 c-0.54,0.3-1.12,0.54-1.74,0.73l-0.22,0.06c-0.52,0.14-1.06,0.25-1.6,0.32c-0.55,0.07-1.12,0.1-1.71,0.1H77.19 c-0.78,0-1.55-0.05-2.3-0.15c-0.74-0.1-1.45-0.25-2.12-0.45l-0.01,0c-0.75-0.22-1.47-0.52-2.13-0.87 c-0.66-0.36-1.27-0.79-1.82-1.28c-0.56-0.49-1.05-1.04-1.48-1.62c-0.43-0.59-0.78-1.23-1.07-1.9c-0.27-0.66-0.48-1.33-0.62-2.03 c-0.14-0.7-0.21-1.42-0.21-2.16c0-0.57,0.05-1.15,0.16-1.72c0.1-0.56,0.26-1.11,0.46-1.64c0.05-0.19,0.21-0.51,0.29-0.7l0.3-0.59 c0.1-0.19,0.22-0.39,0.35-0.59c0.15-0.21,0.3-0.44,0.46-0.65l-0.05-0.04L70.52,74.89L70.52,74.89z"></path></g></svg></h3>
+                  <h3 style="padding: 14px 14px 0px;" tabindex="-1">Sleep Timer<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px" x="0px" y="0px" viewBox="0 0 121.85 126.24" xml:space="preserve" fill="gray" style="bottom: 16px;position: absolute;margin-left: 1px;"><g><path d="M5.27,44.71l22.38-26.77H12.93c-1.27,0-2.47-0.16-3.59-0.49c-0.66-0.19-1.27-0.44-1.83-0.73c-0.56-0.3-1.09-0.66-1.57-1.08 l-0.03-0.02c-0.48-0.42-0.9-0.87-1.27-1.37c-0.36-0.5-0.68-1.04-0.93-1.62C3.48,12.08,3.3,11.5,3.18,10.9 c-0.12-0.61-0.19-1.22-0.19-1.83c0-0.62,0.06-1.23,0.17-1.82c0.12-0.6,0.29-1.18,0.52-1.74c0.24-0.58,0.55-1.13,0.9-1.64 c0.36-0.51,0.77-0.98,1.24-1.42l0.04-0.03c0.47-0.43,0.99-0.8,1.56-1.12C8,0.99,8.61,0.72,9.27,0.52c0.57-0.17,1.16-0.31,1.77-0.39 C11.66,0.04,12.29,0,12.93,0h31.91c1.62,0,3.08,0.22,4.38,0.66c1.33,0.45,2.49,1.14,3.47,2.05c1.02,0.95,1.79,2.09,2.3,3.41 c0.5,1.29,0.75,2.75,0.75,4.36c0,1.26-0.13,2.45-0.39,3.55c-0.14,0.61-0.33,1.19-0.56,1.76c-0.23,0.56-0.51,1.1-0.82,1.6 c-0.22,0.35-0.49,0.74-0.8,1.17c-0.27,0.38-0.63,0.85-1.06,1.39l-1.28,1.6L28.97,47.58h19.64c0.61,0,1.22,0.04,1.83,0.12 c0.58,0.07,1.16,0.19,1.72,0.34c0.66,0.18,1.26,0.42,1.81,0.69c0.55,0.28,1.06,0.62,1.54,1.01l0.03,0.03 c0.51,0.42,0.95,0.88,1.33,1.39c0.39,0.52,0.71,1.07,0.96,1.66l0.11,0.29c0.2,0.5,0.34,1.04,0.44,1.6c0.1,0.56,0.15,1.13,0.15,1.7 c0,0.62-0.06,1.24-0.17,1.84c-0.11,0.6-0.28,1.18-0.5,1.73c-0.24,0.59-0.54,1.15-0.91,1.67c-0.37,0.52-0.79,1.01-1.27,1.44 l-0.06,0.05c-0.47,0.42-1,0.8-1.57,1.11c-0.56,0.31-1.16,0.56-1.81,0.76l-0.23,0.06c-0.52,0.14-1.07,0.25-1.64,0.32 c-0.59,0.07-1.19,0.11-1.78,0.11H12.16c-1.66,0-3.19-0.21-4.58-0.62l-0.01,0c-0.78-0.23-1.52-0.53-2.2-0.91 c-0.69-0.38-1.33-0.82-1.89-1.33c-0.57-0.51-1.08-1.07-1.52-1.68c-0.44-0.61-0.81-1.26-1.1-1.96c-0.29-0.68-0.5-1.39-0.64-2.1 C0.07,56.19,0,55.44,0,54.68c0-0.59,0.06-1.19,0.16-1.78c0.11-0.59,0.27-1.16,0.48-1.7l0.03-0.08c0.08-0.21,0.17-0.43,0.27-0.64 l0.31-0.61l0.36-0.61c0.15-0.21,0.3-0.44,0.46-0.65l-0.05-0.04L5.27,44.71L5.27,44.71z M12.48,111.33l14.9-17.82h-9.34 c-0.91,0-1.76-0.12-2.57-0.35c-0.48-0.14-0.93-0.32-1.33-0.53c-0.41-0.22-0.8-0.49-1.15-0.79l-0.05-0.05 c-0.34-0.29-0.64-0.62-0.89-0.97c-0.27-0.36-0.49-0.76-0.68-1.18c-0.18-0.4-0.31-0.83-0.4-1.27c-0.09-0.44-0.14-0.89-0.14-1.34 c0-0.45,0.04-0.89,0.13-1.32c0.09-0.44,0.21-0.86,0.38-1.27c0.18-0.42,0.4-0.83,0.66-1.2c0.25-0.36,0.56-0.71,0.91-1.03l0.01-0.02 c0.35-0.32,0.73-0.59,1.15-0.83c0.42-0.23,0.87-0.42,1.34-0.57c0.41-0.13,0.84-0.22,1.28-0.28c0.45-0.06,0.9-0.09,1.35-0.09h21.96 c1.15,0,2.2,0.16,3.13,0.48c0.96,0.33,1.81,0.82,2.52,1.49c0.74,0.69,1.31,1.52,1.68,2.48c0.36,0.93,0.54,1.98,0.54,3.13 c0,0.43-0.02,0.86-0.07,1.3c-0.05,0.43-0.12,0.84-0.2,1.23c-0.1,0.43-0.24,0.85-0.4,1.26c-0.16,0.4-0.36,0.79-0.59,1.15 c-0.14,0.24-0.33,0.51-0.56,0.83l-0.73,0.97l-0.88,1.1l-14.56,17.32h12.73c0.43,0,0.86,0.03,1.31,0.08 c0.43,0.05,0.84,0.14,1.23,0.24c0.48,0.13,0.92,0.3,1.31,0.5c0.41,0.21,0.79,0.46,1.15,0.76c0.37,0.3,0.7,0.65,0.98,1.02 c0.29,0.38,0.52,0.79,0.71,1.22l0.08,0.22c0.14,0.37,0.25,0.76,0.32,1.17c0.08,0.41,0.11,0.83,0.11,1.23 c0,0.45-0.04,0.89-0.12,1.33c-0.08,0.44-0.2,0.86-0.37,1.26c-0.17,0.43-0.4,0.84-0.67,1.22c-0.27,0.39-0.58,0.74-0.92,1.05 l-0.04,0.04c-0.35,0.31-0.73,0.58-1.15,0.81c-0.4,0.22-0.84,0.4-1.31,0.55l-0.18,0.05c-0.37,0.1-0.76,0.18-1.17,0.23 c-0.43,0.05-0.86,0.08-1.27,0.08H17.5c-0.57,0-1.13-0.04-1.69-0.11c-0.55-0.07-1.07-0.19-1.57-0.33c-0.57-0.17-1.1-0.39-1.6-0.66 c-0.49-0.27-0.95-0.59-1.37-0.96c-0.42-0.37-0.78-0.77-1.1-1.21c-0.32-0.43-0.58-0.91-0.8-1.42c-0.21-0.5-0.36-1-0.47-1.52 c-0.1-0.52-0.15-1.06-0.15-1.61c0-0.42,0.04-0.86,0.12-1.29c0.08-0.43,0.2-0.84,0.35-1.23c0.08-0.15,0.15-0.35,0.22-0.51l0.22-0.44 l0.41-0.65l-0.05-0.04L12.48,111.33L12.48,111.33z M70.52,74.89l21.47-25.68H77.93c-0.6,0-1.2-0.04-1.79-0.12 c-0.58-0.08-1.14-0.2-1.67-0.35c-0.63-0.18-1.22-0.42-1.76-0.7c-0.55-0.29-1.06-0.64-1.52-1.04l-0.06-0.06 c-0.45-0.39-0.84-0.82-1.18-1.28c-0.36-0.48-0.66-1.01-0.9-1.57c-0.23-0.53-0.41-1.09-0.53-1.68c-0.12-0.59-0.18-1.18-0.18-1.77 c0-0.6,0.06-1.19,0.17-1.77c0.11-0.58,0.28-1.14,0.51-1.67c0.23-0.56,0.53-1.09,0.87-1.58c0.34-0.48,0.74-0.94,1.2-1.36l0.02-0.02 c0.46-0.42,0.97-0.79,1.52-1.1c0.55-0.31,1.15-0.56,1.78-0.75c0.56-0.17,1.13-0.3,1.71-0.38c0.59-0.08,1.2-0.13,1.82-0.13h30.7 c1.56,0,2.97,0.21,4.23,0.64c1.29,0.44,2.41,1.1,3.36,1.98c0.99,0.92,1.73,2.02,2.23,3.3c0.48,1.25,0.73,2.65,0.73,4.21 c0,1.22-0.12,2.36-0.37,3.42c-0.14,0.58-0.32,1.15-0.54,1.7c-0.22,0.55-0.49,1.06-0.79,1.54c-0.2,0.32-0.46,0.7-0.77,1.13 c-0.29,0.41-0.63,0.86-1.01,1.34l-1.23,1.53c-0.38,0.47-0.84,1.02-1.38,1.66l-19.6,23.32h18.8c1.22,0,2.37,0.15,3.42,0.44 c0.62,0.17,1.2,0.4,1.74,0.67c0.55,0.28,1.06,0.61,1.53,1l0.02,0.02c0.49,0.41,0.91,0.85,1.27,1.33c0.37,0.5,0.69,1.04,0.93,1.61 l0.1,0.27c0.19,0.49,0.34,1.01,0.44,1.55c0.1,0.55,0.15,1.1,0.15,1.64c0,0.6-0.06,1.2-0.16,1.78c-0.11,0.58-0.27,1.14-0.49,1.67 c-0.23,0.57-0.52,1.11-0.88,1.62c-0.35,0.5-0.76,0.96-1.22,1.39l-0.06,0.06c-0.46,0.42-0.97,0.78-1.51,1.07 c-0.54,0.3-1.12,0.54-1.74,0.73l-0.22,0.06c-0.52,0.14-1.06,0.25-1.6,0.32c-0.55,0.07-1.12,0.1-1.71,0.1H77.19 c-0.78,0-1.55-0.05-2.3-0.15c-0.74-0.1-1.45-0.25-2.12-0.45l-0.01,0c-0.75-0.22-1.47-0.52-2.13-0.87 c-0.66-0.36-1.27-0.79-1.82-1.28c-0.56-0.49-1.05-1.04-1.48-1.62c-0.43-0.59-0.78-1.23-1.07-1.9c-0.27-0.66-0.48-1.33-0.62-2.03 c-0.14-0.7-0.21-1.42-0.21-2.16c0-0.57,0.05-1.15,0.16-1.72c0.1-0.56,0.26-1.11,0.46-1.64c0.05-0.19,0.21-0.51,0.29-0.7l0.3-0.59 c0.1-0.19,0.22-0.39,0.35-0.59c0.15-0.21,0.3-0.44,0.46-0.65l-0.05-0.04L70.52,74.89L70.52,74.89z"></path></g></svg></h3>
               </div>
-              <div style="padding: 0 15px 20px;">
-                  <input class="form-check-input" type="radio" id="sleep-after-song" name="sleep-after" value="song" style="transform: translateY(2px);">
-                  <label for="sleep-after-song">Sleep after <div style="width: 127px; display: inline-block;"><label for="sleep-after-song-count"></label><input style="width: 35px;" type="number" id="sleep-after-song-count" name="sleep-after-song-count" min="1" value="1"></div> song(s)</label>
-                  <br>
-                  <input class="form-check-input" type="radio" id="sleep-after-minutes" name="sleep-after" value="minutes" style="transform: translateY(2px);">
-                  <label for="sleep-after-minutes">Sleep after <div style="width: 127px; display: inline-block;"><label for="sleep-after-minutes-count"></label><input style="width: 35px;" type="number" id="sleep-after-minutes-count" name="sleep-after-minutes-count" min="1" value="30"></div> minute(s)</label>
+              <div class="form" style="padding-bottom: 10px; margin-top: -2px;">
+                  <input class="form-check-input" type="radio" id="sleep-after-song" name="sleep-after" value="song" style="display: none;">
+                  <label for="sleep-after-song" style="display: flex; align-items: self-end;">
+                    <div style="width: 162px;">
+                      <label for="sleep-after-song-count"></label>
+                      <input type="number" id="sleep-after-song-count" name="sleep-after-song-count" min="1" value="1">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16px" style="height: 16px; margin-bottom: 6px; fill: color-mix(in srgb, var(--spice-subtext), #fff 42%);"><path d="M470.4 1.5L150.4 96A32 32 0 0 0 128 126.5v261.4A139 139 0 0 0 96 384c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V214.3l256-75v184.6a138.4 138.4 0 0 0 -32-3.9c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V32a32 32 0 0 0 -41.6-30.5z"/></svg>
+                    <span class="timer-icons-label icons-label-songs" style="transform: translateX(-10px);">songs</span>
+                  </label>
+                  <input class="form-check-input" type="radio" id="sleep-after-minutes" name="sleep-after" value="minutes" style="display: none;">
+                  <label for="sleep-after-minutes" style="display: flex; align-items: self-end;">
+                    <div style="width: 162px;">
+                      <label for="sleep-after-minutes-count"></label>
+                      <input type="number" id="sleep-after-minutes-count" name="sleep-after-minutes-count" min="1" value="30">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="23px" viewBox="0 0 24 24"  style="height: 23px; margin-bottom: 2px; margin-left: -3px;" fill="lightgray"><path d="m20.145 8.27 1.563-1.563-1.414-1.414L18.586 7c-1.05-.63-2.274-1-3.586-1-3.859 0-7 3.14-7 7s3.141 7 7 7 7-3.14 7-7a6.966 6.966 0 0 0-1.855-4.73zM15 18c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path><path d="M14 10h2v4h-2zm-1-7h4v2h-4zM3 8h4v2H3zm0 8h4v2H3zm-1-4h3.99v2H2z"></path></svg>
+                    <span class="timer-icons-label icons-label-minutes" style="transform: translateX(-5px);">minutes</span>
+                  </label>
               </div>
-              <button type="button" class="btn btn-success" id="sleep-timer-start" disabled onclick="sleepTimerSubmit()">Start Timer</button>
+              <button type="button" class="btn btn-success" id="sleep-timer-start" disabled onclick="sleepTimerSubmit()">Start</button>
           </div>
       </div>
   </div>`);
@@ -10291,7 +10400,7 @@ function toggleSleepTimer() {
 function enableSleepTimer() {
   let type = document.querySelector('input[name="sleep-after"]:checked').value;
   sleepTimer = { type, count: Number($(`input#sleep-after-${type}-count`).val()) };
-  $('button#sleep-timer-start').text(`Stop Timer${type == 'song' ? ` (${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)` : ''}`).addClass('btn-primary').removeClass('btn-success');
+  $('button#sleep-timer-start').html(type == 'song' ? `<b>${sleepTimer.count}</b> song${sleepTimer.count == 1 ? '' : 's'} remain${sleepTimer.count == 1 ? 's' : ''}` : '').addClass('btn-primary').removeClass('btn-success');
   sleepTimerButton.label = `${type == 'song' ? `${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining` : 'Sleep Timer'}`;
   sleepTimerButton.active = true;
 
@@ -10300,7 +10409,7 @@ function enableSleepTimer() {
     sleepTimer.timer = setInterval(function() {
         var delta = Date.now() - start; // milliseconds elapsed since start
         let timeRemaining = (sleepTimer.count - (delta / 1000 / 60)) >= 60 ? moment.utc((sleepTimer.count * 60 * 1000) - delta).format('HH:mm:ss') : moment.utc((sleepTimer.count * 60 * 1000) - delta).format('mm:ss');
-        $('button#sleep-timer-start').text(`Stop Timer (${timeRemaining} remaining)`);
+        $('button#sleep-timer-start').text(timeRemaining).addClass('timer');
         sleepTimerButton.label = `${timeRemaining} remaining`;
         if (Math.floor(delta / 1000 / 60) >= sleepTimer.count) {
           clearInterval(sleepTimer.timer);
@@ -10314,7 +10423,7 @@ function enableSleepTimer() {
 function disableSleepTimer() {
   clearInterval(sleepTimer.timer);
   sleepTimer = { type: 'disabled' };
-  $('button#sleep-timer-start').text('Start Timer').addClass('btn-success').removeClass('btn-primary');
+  $('button#sleep-timer-start').text('Start').addClass('btn-success').removeClass('btn-primary timer');
   sleepTimerButton.active = false;
   sleepTimerButton.label = 'Sleep Timer';
 }
@@ -10347,7 +10456,7 @@ Spicetify.Player.addEventListener('songchange', function() {
         Spicetify.Player.skipBack(99999999);
       }, 3100)
     } else {
-      $('button#sleep-timer-start').text(`Stop Timer (${--sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining)`);
+      $('button#sleep-timer-start').html(`<b>${--sleepTimer.count}</b> song${sleepTimer.count == 1 ? '' : 's'} remain${sleepTimer.count == 1 ? 's' : ''}`);
       sleepTimerButton.label = `${sleepTimer.count} song${sleepTimer.count == 1 ? '' : 's'} remaining`;
     }
   }
