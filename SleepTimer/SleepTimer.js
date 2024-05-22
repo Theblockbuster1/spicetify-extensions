@@ -1899,9 +1899,9 @@ cursor: pointer;
 #sleep-timer-menu .form-control:focus {
 color: #212529;
 background-color: #fcfcfc;
-border-color: #a2f2be;
+border-color: color-mix(in srgb, var(--spice-button, #1db954), #fff 50%);
 outline: 0;
-box-shadow: 0 0 0 0.25rem rgba(30, 215, 96, 0.25);
+box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--spice-button, #1db954) 46%, #fff 17%);
 }
 #sleep-timer-menu .form-control::-webkit-date-and-time-value {
 height: 1.5em;
@@ -2595,7 +2595,7 @@ vertical-align: middle;
 cursor: pointer;
 user-select: none;
 border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
-border-radius: var(--bs-btn-border-radius);
+border-radius: var(--bs-btn-border-radius) !important;
 background-color: var(--bs-btn-bg);
 transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2632,9 +2632,10 @@ box-shadow: var(--bs-btn-focus-box-shadow);
 #sleep-timer-menu .btn:disabled, #sleep-timer-menu .btn.disabled, fieldset:disabled #sleep-timer-menu .btn {
 color: var(--bs-btn-disabled-color);
 pointer-events: none;
-background-color: var(--bs-btn-disabled-bg);
-border-color: var(--bs-btn-disabled-border-color);
+background-color: var(--spice-button-disabled, var(--bs-btn-disabled-bg));
+border-color: var(--spice-highlight-elevated, var(--bs-btn-disabled-border-color));
 opacity: var(--bs-btn-disabled-opacity);
+cursor: grabbing;
 }
 #sleep-timer-menu .btn-primary {
 --bs-btn-color: #fff;
@@ -10062,9 +10063,9 @@ border-color: #dedede;
 }
 #sleep-timer-menu .btn-primary,
 #sleep-timer-menu .btn-primary:hover {
-background: #d9230f;
+background: var(--spice-notification-error, #d9230f);
 filter: none;
-border: 1px solid #d9230f;
+border: 1px solid var(--spice-notification-error, #d9230f);
 }
 #sleep-timer-menu .btn-secondary,
 #sleep-timer-menu .btn-secondary:hover {
@@ -10079,9 +10080,9 @@ box-shadow: 0 0 0 0.2rem rgba(221, 221, 221, 0.5);
 }
 #sleep-timer-menu .btn-success,
 #sleep-timer-menu .btn-success:hover {
-background: #1ed760;
+background: var(--spice-button, #1ed760);
 filter: none;
-border: 1px solid #1ed760;
+border: 1px solid var(--spice-button, #1ed760);
 }
 #sleep-timer-menu .btn-info,
 #sleep-timer-menu .btn-info:hover {
@@ -10137,18 +10138,18 @@ color: #373a3c;
 
 
 .dMODvo {
-box-sizing: border-box;
--webkit-tap-highlight-color: transparent;
-margin-block: 0px;
-font-size: 1.125rem;
-font-weight: 700;
-font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
-color: var(--text-base,#000000);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin-block: 0px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+  color: var(--text-base,#000000);
 }
 
 
 .input-spinner-input-spinner input {
-width: 35px;
+  width: 35px;
 }
 
 #sleep-timer-menu {
@@ -10205,6 +10206,16 @@ button#sleep-timer-start:hover {
 #sleep-timer-menu div.input-spinner-input-spinner button strong {
   position: absolute;
   transform: translate(-4.5px, -12px);
+}
+
+#sleep-timer-menu div.input-spinner-input-spinner button:first-child {
+  border-radius: var(--bs-btn-border-radius) 0 0 var(--bs-btn-border-radius) !important;
+}
+#sleep-timer-menu div.input-spinner-input-spinner input {
+  border-radius: 0 !important;
+}
+#sleep-timer-menu div.input-spinner-input-spinner button:last-child {
+  border-radius: 0 var(--bs-btn-border-radius) var(--bs-btn-border-radius) 0 !important;
 }
 
 #sleep-timer-menu label svg {
@@ -10315,8 +10326,8 @@ to {
                       <label for="sleep-after-song-count"></label>
                       <input type="number" id="sleep-after-song-count" name="sleep-after-song-count" min="1" value="1">
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16px" style="height: 16px; margin-bottom: 6px; fill: color-mix(in srgb, var(--spice-subtext), #fff 42%);"><path d="M470.4 1.5L150.4 96A32 32 0 0 0 128 126.5v261.4A139 139 0 0 0 96 384c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V214.3l256-75v184.6a138.4 138.4 0 0 0 -32-3.9c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V32a32 32 0 0 0 -41.6-30.5z"/></svg>
-                    <span class="timer-icons-label icons-label-songs" style="transform: translateX(-10px);">songs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16px" style="height: 16px; margin-bottom: 6px; fill: color-mix(in srgb, var(--spice-subtext), #fff 42%); cursor: pointer;"><path d="M470.4 1.5L150.4 96A32 32 0 0 0 128 126.5v261.4A139 139 0 0 0 96 384c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V214.3l256-75v184.6a138.4 138.4 0 0 0 -32-3.9c-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V32a32 32 0 0 0 -41.6-30.5z"/></svg>
+                    <span class="timer-icons-label icons-label-songs" style="transform: translateX(-10px); cursor: pointer;">songs</span>
                   </label>
                   <input class="form-check-input" type="radio" id="sleep-after-minutes" name="sleep-after" value="minutes" style="display: none;">
                   <label for="sleep-after-minutes" style="display: flex; align-items: self-end;">
@@ -10324,8 +10335,8 @@ to {
                       <label for="sleep-after-minutes-count"></label>
                       <input type="number" id="sleep-after-minutes-count" name="sleep-after-minutes-count" min="1" value="30">
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="23px" viewBox="0 0 24 24"  style="height: 23px; margin-bottom: 2px; margin-left: -3px;" fill="lightgray"><path d="m20.145 8.27 1.563-1.563-1.414-1.414L18.586 7c-1.05-.63-2.274-1-3.586-1-3.859 0-7 3.14-7 7s3.141 7 7 7 7-3.14 7-7a6.966 6.966 0 0 0-1.855-4.73zM15 18c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path><path d="M14 10h2v4h-2zm-1-7h4v2h-4zM3 8h4v2H3zm0 8h4v2H3zm-1-4h3.99v2H2z"></path></svg>
-                    <span class="timer-icons-label icons-label-minutes" style="transform: translateX(-5px);">minutes</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="23px" viewBox="0 0 24 24"  style="height: 23px; margin-bottom: 2px; margin-left: -3px; cursor: pointer;" fill="lightgray"><path d="m20.145 8.27 1.563-1.563-1.414-1.414L18.586 7c-1.05-.63-2.274-1-3.586-1-3.859 0-7 3.14-7 7s3.141 7 7 7 7-3.14 7-7a6.966 6.966 0 0 0-1.855-4.73zM15 18c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path><path d="M14 10h2v4h-2zm-1-7h4v2h-4zM3 8h4v2H3zm0 8h4v2H3zm-1-4h3.99v2H2z"></path></svg>
+                    <span class="timer-icons-label icons-label-minutes" style="transform: translateX(-5px); cursor: pointer;">minutes</span>
                   </label>
               </div>
               <button type="button" class="btn btn-success" id="sleep-timer-start" disabled onclick="sleepTimerSubmit()">Start</button>
