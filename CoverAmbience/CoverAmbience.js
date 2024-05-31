@@ -163,7 +163,7 @@ function initiate() {
     localStorage.CoverAmbienceBorderOpacity = value / 100;
   }
 
-  const info = document.querySelector("div.main-nowPlayingWidget-trackInfo.main-trackInfo-container");
+  const info = document.querySelector("div.main-trackInfo-container");
 
   var contextMenu = 0;
 
