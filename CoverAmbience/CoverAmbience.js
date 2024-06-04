@@ -233,13 +233,13 @@ function initiate() {
   borderOpacityMenuItem.register();
 }
 
-if (document.querySelector('.main-nowPlayingBar-container')) {
+if (Spicetify.Player.data) {
   initiate();
 } else {
     var waiting = true;
     const observer = new MutationObserver(() => {
         if (waiting) {
-          if (document.querySelector('.main-nowPlayingBar-container')) {
+          if (Spicetify.Player.data) {
               waiting = false;
               initiate();
           }
