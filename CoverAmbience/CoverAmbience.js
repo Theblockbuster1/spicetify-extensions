@@ -236,26 +236,14 @@ function initiate() {
 if (Spicetify.Player.data) {
   initiate();
 } else {
-    var waiting = true;
-    const observer = new MutationObserver(() => {
-        if (waiting) {
-          if (Spicetify.Player.data) {
-              waiting = false;
-              initiate();
-          }
-        } else {
-          let playingBar = document.querySelector('.main-nowPlayingBar-container');
-          if (document.querySelector('.BeautifulLyricsPage.Cinema')) {
-              playingBar.style.setProperty("--bg-img", "unset");
-              playingBar.style.setProperty("--bg-img-before", "unset");
-          } else {
-              playingBar.style.removeProperty("--bg-img");
-              playingBar.style.removeProperty("--bg-img-before");
-          }
-        }
-    });
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+  const observer = new MutationObserver((_, observer) => {
+    if (Spicetify.Player.data) {
+      observer.disconnect();
+      initiate();
+    }
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 }
