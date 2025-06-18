@@ -10,7 +10,7 @@ ca_style.innerHTML = `
     border-radius: 8px;
 }
 
-footer.main-nowPlayingBar-container {
+aside.main-nowPlayingBar-container {
     transition: background 0.5s ease;
     background-size: 100%;
     --bg-img: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
@@ -21,7 +21,7 @@ footer.main-nowPlayingBar-container {
     --cover-ambience-border-opacity: ${localStorage.CoverAmbienceBorderOpacity || 0.5};
     --cover-ambience-border-opacity-small: ${((localStorage.CoverAmbienceBorderOpacity || 0.5) * 80) / 100};
 }
-footer.main-nowPlayingBar-container:before {
+aside.main-nowPlayingBar-container:before {
     background-image: var(--bg-img-before);
     content: "";
     display: block;
