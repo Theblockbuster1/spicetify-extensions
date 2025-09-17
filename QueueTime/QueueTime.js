@@ -2,12 +2,14 @@ let qt_style = document.createElement( "style" );
 qt_style.innerHTML = `
 .queue-queuePage-header,
 #queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3,
-.vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type {
+.vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type,
+#queue-panel .KHNumev0cQFGYG2rSV1p:first-child .fYX4XCQz81A_L1WZ88uc {
     position: relative;
 }
 .queue-queuePage-header::after,
 #queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3::after,
-.vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type::after {
+.vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type::after,
+#queue-panel .KHNumev0cQFGYG2rSV1p:first-child .fYX4XCQz81A_L1WZ88uc::after {
     content: var(--queue-remaining);
     color: var(--spice-subtext);
     font-size: 1rem;
@@ -18,7 +20,8 @@ qt_style.innerHTML = `
 }
 /* for queue panel only: */
 .queue-panel .queue-queuePage-header::after,
-#queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3::after {
+#queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3::after,
+#queue-panel .KHNumev0cQFGYG2rSV1p:first-child .fYX4XCQz81A_L1WZ88uc::after {
     top: 4.5px;
 }
 `;
@@ -36,5 +39,10 @@ setInterval( () => {
 		if ( isNaN( Number( cur.contextTrack.metadata.duration ) ) ) arr.splice(1);
 		return acc + ( Number( cur.contextTrack.metadata.duration ) || 0 )
 	}, 0 ) || 0;
-	document.querySelectorAll( '.queue-queuePage-header, #queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3, .vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type' )?.forEach(e => e.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` ) );
+	document.querySelectorAll(
+        `.queue-queuePage-header,
+        #queue-panel .NWVZ_rxlezZ8xTHlMg4Y:first-child .LFdMliaHVgrpBcqNKHU3,
+        .vLZJk3f3zoMmc3u9QMrc .LIaQPESoX4ijscRRn3lz:first-of-type,
+        #queue-panel .KHNumev0cQFGYG2rSV1p:first-child .fYX4XCQz81A_L1WZ88uc`
+    )?.forEach(e => e.style.setProperty( '--queue-remaining', `'${moment.utc( totalTime + Spicetify.Player.getDuration() - Spicetify.Player.getProgress() ).format( 'HH:mm:ss' )} Remaining'` ) );
 }, 1000 );
