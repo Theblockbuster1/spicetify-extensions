@@ -6,11 +6,14 @@ ca_style.innerHTML = `
 .Root__now-playing-bar.LibraryX {
   --cover-ambience-background: var(--spice-sidebar);
 }
-.LibraryX .main-nowPlayingBar-container, .LibraryX .main-nowPlayingBar-container:before {
+.LibraryX .main-nowPlayingBar-container,
+.LibraryX .main-nowPlayingBar-container:before,
+.LibraryX [data-testid="now-playing-bar"] > div,
+.LibraryX [data-testid="now-playing-bar"] > div:before {
     border-radius: 8px;
 }
 
-aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container {
+aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container, [data-testid="now-playing-bar"] > div {
     transition: background 0.5s ease;
     background-size: 100%;
     --bg-img: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
@@ -21,7 +24,7 @@ aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container {
     --cover-ambience-border-opacity: ${localStorage.CoverAmbienceBorderOpacity || 0.5};
     --cover-ambience-border-opacity-small: ${((localStorage.CoverAmbienceBorderOpacity || 0.5) * 80) / 100};
 }
-aside.main-nowPlayingBar-container:before, footer.main-nowPlayingBar-container:before {
+aside.main-nowPlayingBar-container:before, footer.main-nowPlayingBar-container:before, [data-testid="now-playing-bar"] > div:before {
     background-image: var(--bg-img-before);
     content: "";
     display: block;
@@ -136,7 +139,7 @@ async function checkBackgroundColor() {
 var beforeElement = false;
 async function setGradient() {
     checkBackgroundColor();
-    let style = document.querySelector('.main-nowPlayingBar-container')?.style;
+    let style = document.querySelector('.main-nowPlayingBar-container, [data-testid="now-playing-bar"] > div')?.style;
     let rgb = (await fetchExtractedColors() || [128, 128, 128]);
     let color = RGBToHSL(rgb);
     if (beforeElement) {
@@ -156,7 +159,7 @@ function initiate() {
   setInterval(checkBackgroundColor, 5000);
 
   window.updateCABorderOpacity = function(value) {
-    let style = document.querySelector('.main-nowPlayingBar-container')?.style;
+    let style = document.querySelector('.main-nowPlayingBar-container, [data-testid="now-playing-bar"] > div')?.style;
     style.setProperty('--cover-ambience-border-opacity', value / 100);
     style.setProperty('--cover-ambience-border-opacity-small', ((value / 100) * 80) / 100);
 
