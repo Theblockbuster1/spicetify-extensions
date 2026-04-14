@@ -13,7 +13,7 @@ ca_style.innerHTML = `
     border-radius: 8px;
 }
 
-aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container, [data-testid="now-playing-bar"] > div {
+aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container, [data-testid="now-playing-bar"] > div.main-nowPlayingBar-nowPlayingBar {
     transition: background 0.5s ease;
     background-size: 100%;
     --bg-img: linear-gradient(to right, var(--cover-ambience-color) 0, var(--cover-ambience-background) 280px, var(--cover-ambience-background) 100%);
@@ -24,7 +24,7 @@ aside.main-nowPlayingBar-container, footer.main-nowPlayingBar-container, [data-t
     --cover-ambience-border-opacity: ${localStorage.CoverAmbienceBorderOpacity || 0.5};
     --cover-ambience-border-opacity-small: ${((localStorage.CoverAmbienceBorderOpacity || 0.5) * 80) / 100};
 }
-aside.main-nowPlayingBar-container:before, footer.main-nowPlayingBar-container:before, [data-testid="now-playing-bar"] > div:before {
+aside.main-nowPlayingBar-container:before, footer.main-nowPlayingBar-container:before, [data-testid="now-playing-bar"] > div.main-nowPlayingBar-nowPlayingBar:before {
     background-image: var(--bg-img-before);
     content: "";
     display: block;
