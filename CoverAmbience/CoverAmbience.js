@@ -1,15 +1,20 @@
 let ca_style = document.createElement('style');
 ca_style.innerHTML = `
 :root {
-  --cover-ambience-background: var(--spice-player);
+    --cover-ambience-background: var(--spice-player);
 }
 .Root__now-playing-bar.LibraryX {
-  --cover-ambience-background: var(--spice-sidebar);
+    --cover-ambience-background: var(--spice-sidebar);
 }
 .LibraryX .main-nowPlayingBar-container,
 .LibraryX .main-nowPlayingBar-container:before,
 .LibraryX [data-testid="now-playing-bar"] > div,
-.LibraryX [data-testid="now-playing-bar"] > div:before {
+.LibraryX [data-testid="now-playing-bar"] > div:before,
+div:has(.YourLibraryX) .main-nowPlayingBar-container,
+div:has(.YourLibraryX) .main-nowPlayingBar-container:before,
+div:has(.YourLibraryX) [data-testid="now-playing-bar"] > div,
+div:has(.YourLibraryX) [data-testid="now-playing-bar"] > div:before {
+    --cover-ambience-background: var(--spice-sidebar);
     border-radius: 8px;
 }
 
@@ -42,11 +47,11 @@ aside.main-nowPlayingBar-container:before, footer.main-nowPlayingBar-container:b
 /* Add outlines to song text/artist/genre */
 .Root__now-playing-bar .main-trackInfo-name
 {
-  text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), 1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), -1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), 1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity));
+    text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), 1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), -1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity)), 1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity));
 }
 .Root__now-playing-bar .main-trackInfo-artists, .Root__now-playing-bar .main-trackInfo-genres
 {
-  text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), 1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), -1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), 1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small));
+    text-shadow: -1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), 1px -1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), -1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small)), 1px 1px 0 rgba(var(--spice-rgb-player), var(--cover-ambience-border-opacity-small));
 }
 `;
 document.head.appendChild(ca_style);
